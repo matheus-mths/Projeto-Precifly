@@ -74,6 +74,18 @@ tb.Label(inputs, text="Margem de Lucro Desejada (%)").pack(anchor=W, pady=(15, 2
 input_margem_lucro = tb.Entry(inputs)
 input_margem_lucro.pack(fill=X)
 
+def funcao_botao():
+    print("teste")
+
+meu_botao = tb.Button(
+    inputs, 
+    text="Calcular Preço", 
+    bootstyle="success", 
+    command=funcao_botao
+)
+meu_botao.pack(pady=20)
+
+
 # rasultados da precificação
 resultados = tb.Labelframe(fundo_dados, text="Resultados da Precificação", padding=20, bootstyle="success")
 resultados.pack(side=RIGHT, fill=BOTH, expand=True, padx=(10, 0))
@@ -93,15 +105,15 @@ card_preco_ideal.pack(fill=X, pady=10)
 tb.Label(card_preco_ideal, text='Preço Ideal', font=("Segoe UI", 12, "bold")).pack(anchor=W, padx=15, pady=(10, 0))
 tb.Label(card_preco_ideal, text="R$ 0,00", font=("Segoe UI", 20, "bold")).pack(anchor=W, padx=15, pady=(5, 10))
 
-card_preco_min = tb.Frame(resultados, bootstyle='warning')
-card_preco_min.pack(fill=X, pady=10)
-tb.Label(card_preco_min, text='Preço Mínimo', font=("Segoe UI", 12, "bold")).pack(anchor=W, padx=15, pady=(10, 0))
-tb.Label(card_preco_min, text="R$ 0,00", font=("Segoe UI", 20, "bold")).pack(anchor=W, padx=15, pady=(5, 10))
+card_lucro = tb.Frame(resultados, bootstyle='info')
+card_lucro.pack(fill=X, pady=10)
+tb.Label(card_lucro, text='Preço Mínimo', font=("Segoe UI", 12, "bold")).pack(anchor=W, padx=15, pady=(10, 0))
+tb.Label(card_lucro, text="R$ 0,00", font=("Segoe UI", 20, "bold")).pack(anchor=W, padx=15, pady=(5, 10))
 
-card_preco_min = tb.Frame(resultados, bootstyle='warning')
-card_preco_min.pack(fill=X, pady=10)
-tb.Label(card_preco_min, text='Preço Mínimo', font=("Segoe UI", 12, "bold")).pack(anchor=W, padx=15, pady=(10, 0))
-tb.Label(card_preco_min, text="R$ 0,00", font=("Segoe UI", 20, "bold")).pack(anchor=W, padx=15, pady=(5, 10))
+card_total_impostos = tb.Frame(resultados, bootstyle='primary')
+card_total_impostos.pack(fill=X, pady=10)
+tb.Label(card_total_impostos, text='Preço Mínimo', font=("Segoe UI", 12, "bold")).pack(anchor=W, padx=15, pady=(10, 0))
+tb.Label(card_total_impostos, text="R$ 0,00", font=("Segoe UI", 20, "bold")).pack(anchor=W, padx=15, pady=(5, 10))
 
 
 
