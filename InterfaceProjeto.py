@@ -77,12 +77,7 @@ input_margem_lucro.pack(fill=X)
 def funcao_botao():
     print("teste")
 
-meu_botao = tb.Button(
-    inputs, 
-    text="Calcular Preço", 
-    bootstyle="success", 
-    command=funcao_botao
-)
+meu_botao = tb.Button(inputs, text="Calcular Preço", bootstyle="success", command=funcao_botao)
 meu_botao.pack(pady=20)
 
 
