@@ -1,7 +1,6 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from PIL import Image, ImageTk
-from funções import *
 
 janela_login = tb.Window(themename="superhero")
 janela_login.title('Tela de Login')
@@ -38,7 +37,7 @@ senha.pack(anchor='w', padx=(10, 0))
 input_senha = tb.Entry(fundo_frame, show='*', width=30)
 input_senha.pack()
 
-tb.Button(fundo_frame, text="Login", bootstyle="primary", width=15, command=realizar_login).pack(pady=20)
+tb.Button(fundo_frame, text="Login", bootstyle="primary", width=15).pack(pady=20)
 
 
 janela_login.mainloop()
