@@ -16,29 +16,43 @@ fundo_dados.pack(fill=BOTH, expand=True, padx=20, pady=10)
 # inputs
 inputs = tb.Labelframe(fundo_dados, text="Dados do Produto", padding=20, bootstyle="primary")
 inputs.pack(side=LEFT, fill=BOTH, expand=True, padx=(0, 10)) 
+
+var_nome_produto = tb.StringVar()
+var_custo_produto = tb.DoubleVar()
+var_frete_fornecedor = tb.DoubleVar()
+var_frete_assumido = tb.DoubleVar()
+var_custo_embalagem = tb.DoubleVar()
+mercado_livre = tb.BooleanVar()
+shopee = tb.BooleanVar()
+amazon = tb.BooleanVar()
+magalu = tb.BooleanVar()
+var_taxa_maquininha = tb.DoubleVar()
+var_imposto_ibpt = tb.DoubleVar()
+var_margem_lucro = tb.DoubleVar()
+
 # nome do produto
 tb.Label(inputs, text="Produto").pack(anchor=W, pady=(10, 2)) 
-input_produto = tb.Entry(inputs, width=25)
+input_produto = tb.Entry(inputs, textvariable=var_nome_produto)
 input_produto.pack(fill=X)
 
 # custo do produto
 tb.Label(inputs, text="Custo do Produto (R$)").pack(anchor=W, pady=(10, 2))
-input_custo = tb.Entry(inputs)
+input_custo = tb.Entry(inputs, textvariable=var_custo_produto)
 input_custo.pack(fill=X)
 
 # frete fornecedor (se houver, o lojista coloca, ele não é obrigado a colocar. ou ele põe zero)
 tb.Label(inputs, text="Frete do Fornecedor (R$)").pack(anchor=W, pady=(10, 2))
-input_frete_fornecedor = tb.Entry(inputs)
+input_frete_fornecedor = tb.Entry(inputs, textvariable=var_frete_fornecedor)
 input_frete_fornecedor.pack(fill=X)
 
 # frete assumido (na venda, se houver. ou ele põe zero)
 tb.Label(inputs, text="Frete Assumido pelo Vendedor (R$)").pack(anchor=W, pady=(10, 2))
-input_frete_assumido = tb.Entry(inputs)
+input_frete_assumido = tb.Entry(inputs, textvariable=var_frete_assumido)
 input_frete_assumido.pack(fill=X)
 
 # custo pra embalar
 tb.Label(inputs, text="Embalagem (R$)").pack(anchor=W, pady=(10, 2))
-input_embalagem = tb.Entry(inputs)
+input_embalagem = tb.Entry(inputs, textvariable=var_custo_embalagem)
 input_embalagem.pack(fill=X)
 
 # marketplace
@@ -46,12 +60,6 @@ tb.Label(inputs, text="Marketplace").pack(anchor=W, pady=(15, 5))
 
 marketplace_checks = tb.Frame(inputs) #fundo para colocar os checks
 marketplace_checks.pack(fill=X)
-
-#criando variáveis do tipo boolean para colocar nos checks pro sistema reconhecer qual foi selecionado
-mercado_livre = tb.BooleanVar()
-shopee = tb.BooleanVar()
-amazon = tb.BooleanVar()
-magalu = tb.BooleanVar()
 
 #checks
 tb.Checkbutton(marketplace_checks, text="Mercado Livre", variable=mercado_livre, bootstyle="success-round-toggle").pack(anchor=W)
@@ -61,23 +69,38 @@ tb.Checkbutton(marketplace_checks, text="Magalu", variable=magalu, bootstyle="su
 
 # taxa da maquininha
 tb.Label(inputs, text="Taxa da Maquininha (%)").pack(anchor=W, pady=(15, 2))
-input_taxa_maquininha = tb.Entry(inputs)
+input_taxa_maquininha = tb.Entry(inputs, textvariable=var_taxa_maquininha)
 input_taxa_maquininha.pack(fill=X)
 
 # imposto ibpt
 tb.Label(inputs, text="Impostos IBPT (%)").pack(anchor=W, pady=(15, 2))
-input_impostos = tb.Entry(inputs)
+input_impostos = tb.Entry(inputs, textvariable=var_imposto_ibpt)
 input_impostos.pack(fill=X)
 
 # margem de lucro
 tb.Label(inputs, text="Margem de Lucro Desejada (%)").pack(anchor=W, pady=(15, 2))
-input_margem_lucro = tb.Entry(inputs)
+input_margem_lucro = tb.Entry(inputs, textvariable=var_margem_lucro)
 input_margem_lucro.pack(fill=X)
 
-def funcao_botao():
-    print('a')
+def calcular_precificacao():
+    nome_produto = var_nome_produto.get()
+    custo_produto = float(var_custo_produto.get().replace(",", "."))
+    frete_fornecedor = float(var_frete_fornecedor.get().replace(",", "."))
+    frete_assumido = float(var_frete_assumido.get().replace(",", "."))
+    custo_embalagem = float(var_custo_embalagem.get().replace(",", "."))
+    taxa_maquinha = float(var_taxa_maquininha.get().replace(",", "."))
+    imposto_ibpt = float(var_imposto_ibpt.get().replace(",", "."))
+    margem_de_lucro = float(var_margem_lucro.get().replace(",", "."))
+    
+    custo_operacional = f'R$ {(custo_produto + frete_fornecedor + frete_assumido + custo_embalagem)}'
+    custos_percentuais = f'R$ {(taxa_maquinha + imposto_ibpt) / 100}'
 
-botao = tb.Button(inputs, text="Calcular Preço", bootstyle="success", command=funcao_botao)
+    preco_minimo = f'R$ {custo_operacional / (1 - custos_percentuais)}'
+    preco_lucro = f'R$ {custo_operacional / (1 - custos_percentuais - (margem_de_lucro / 100))}'
+
+    return custo_operacional
+
+botao = tb.Button(inputs, text="Calcular Preço", bootstyle="success", command=calcular_precificacao)
 botao.pack(pady=20)
 
 
@@ -87,8 +110,8 @@ resultados.pack(side=RIGHT, fill=BOTH, expand=True, padx=(10, 0))
 
 card_custo_total = tb.Frame(resultados, bootstyle='danger')
 card_custo_total.pack(fill=X, pady=10)
-tb.Label(card_custo_total, text='Custos Totais', font=("Segoe UI", 14, "bold"), background='#d9534f').pack(anchor=W, padx=15, pady=(10, 0))
-tb.Label(card_custo_total, text="R$ 0,00", font=("Segoe UI", 20, "bold"), background='#d9534f').pack(anchor=W, padx=15, pady=(5, 10))
+tb.Label(card_custo_total, text='Custo Total', font=("Segoe UI", 14, "bold"), background='#d9534f').pack(anchor=W, padx=15, pady=(10, 0))
+tb.Label(card_custo_total, textvariable=, font=("Segoe UI", 20, "bold"), background='#d9534f').pack(anchor=W, padx=15, pady=(5, 10))
 
 card_preco_min = tb.Frame(resultados, bootstyle='warning')
 card_preco_min.pack(fill=X, pady=10)
@@ -97,19 +120,12 @@ tb.Label(card_preco_min, text="R$ 0,00", font=("Segoe UI", 20, "bold"), backgrou
 
 card_preco_ideal = tb.Frame(resultados, bootstyle='success')
 card_preco_ideal.pack(fill=X, pady=10)
-tb.Label(card_preco_ideal, text='Preço Ideal', font=("Segoe UI", 14, "bold"), background='#5cb85c').pack(anchor=W, padx=15, pady=(10, 0))
+tb.Label(card_preco_ideal, text='Preço Ideal (Com Lucro)', font=("Segoe UI", 14, "bold"), background='#5cb85c').pack(anchor=W, padx=15, pady=(10, 0))
 tb.Label(card_preco_ideal, text="R$ 0,00", font=("Segoe UI", 20, "bold"), background='#5cb85c').pack(anchor=W, padx=15, pady=(5, 10))
 
 card_lucro = tb.Frame(resultados, bootstyle='info')
 card_lucro.pack(fill=X, pady=10)
-tb.Label(card_lucro, text='Lucro', font=("Segoe UI", 14, "bold"), background='#5bc0de').pack(anchor=W, padx=15, pady=(10, 0))
+tb.Label(card_lucro, text='Custos Percentuais', font=("Segoe UI", 14, "bold"), background='#5bc0de').pack(anchor=W, padx=15, pady=(10, 0))
 tb.Label(card_lucro, text="R$ 0,00", font=("Segoe UI", 20, "bold"), background='#5bc0de').pack(anchor=W, padx=15, pady=(5, 10))
-
-card_total_impostos = tb.Frame(resultados, bootstyle='primary')
-card_total_impostos.pack(fill=X, pady=10)
-tb.Label(card_total_impostos, text='Pago em Impostos', font=("Segoe UI", 14, "bold"), background='#4c9be8').pack(anchor=W, padx=15, pady=(10, 0))
-tb.Label(card_total_impostos, text="R$ 0,00", font=("Segoe UI", 20, "bold"), background='#4c9be8').pack(anchor=W, padx=15, pady=(5, 10))
-
-
 
 app.mainloop()
