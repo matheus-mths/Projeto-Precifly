@@ -1,6 +1,7 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import * # para ser possível deixar alinhado, não ter espaços em branco e tals
 
+
 # criando janela
 app = tb.Window(themename="superhero")
 app.title("Sistema Inteligente de Precificação")
