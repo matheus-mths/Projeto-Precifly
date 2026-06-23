@@ -69,5 +69,7 @@ Antes de começar, você precisará ter o Python instalado em sua máquina. Tamb
 * Instale as dependências necessárias: pip install ttkbootstrap requests pillow
 * Execute a aplicação através da tela de login: python TelaLogin.py
 * Para utilização, o banco de dados já conta com um usuário administrador previamente cadastrado: 
-    * E-mail: admin@gmail.com
+    * E-mail: "admin@gmail.com"
     * Senha: 123456
+* O estoque inicial também conta com exemplos de eletrônicos cadastrados para testes de busca ou de novas precificações, como "Notebook Gamer", "Mouse Gamer"
+
