@@ -1,10 +1,10 @@
-# PreciFly 🚀 - Sistema Inteligente de Precificação
+# PreciFly - Sistema Inteligente de Precificação
 
 O **PreciFly** é uma aplicação desktop desenvolvida como projeto acadêmico para auxiliar microempreendedores e lojistas a calcularem o preço ideal de venda de seus produtos. O sistema automatiza a análise de custos, integra impostos em tempo real baseados na localização e simula margens de lucro líquidas e taxas de marketplaces parceiros de forma simplificada.
 
 ---
 
-## 🎯 Intuído do Projeto
+## Intuído do Projeto
 
 Precificar um produto no mercado brasileiro vai muito além de aplicar uma simples porcentagem sobre o custo de compra. É necessário considerar variações tributárias estaduais, taxas de cartões/maquininhas e as pesadas comissões cobradas por plataformas de e-commerce. 
 
@@ -12,7 +12,7 @@ O **PreciFly** resolve essa dor de cabeça centralizando esses cálculos em uma 
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 O projeto foi construído utilizando o ecossistema Python e ferramentas modernas de interface e armazenamento:
 
@@ -24,7 +24,7 @@ O projeto foi construído utilizando o ecossistema Python e ferramentas modernas
 
 ---
 
-## ⚙️ Como o Sistema Funciona
+## Como o Sistema Funciona
 
 O fluxo do sistema é dividido em três etapas principais: Autenticação, Consulta/Gerenciamento de Estoque e Cálculo Dinâmico.
 
@@ -43,7 +43,7 @@ O usuário insere a taxa da maquininha de cartão e a margem de lucro desejada. 
 
 ---
 
-## 📂 Estrutura de Arquivos
+## Estrutura de Arquivos
 
 * `TelaLogin.py`: Gerencia a interface de login e a inicialização segura do programa.
 * `TelaPrincipal.py`: Painel central (Dashboard) onde o usuário busca produtos, preenche as variáveis de venda e visualiza os cards de resultados.
@@ -52,7 +52,7 @@ O usuário insere a taxa da maquininha de cartão e a margem de lucro desejada. 
 
 ---
 
-## 🗄️ Estrutura do Banco de Dados
+## Estrutura do Banco de Dados
 
 O banco de dados armazena informações estruturadas de forma relacional:
 
@@ -62,14 +62,4 @@ O banco de dados armazena informações estruturadas de forma relacional:
 
 ---
 
-## 🚀 Como Executar o Projeto
-
-### Pré-requisitos
-Antes de começar, você precisará ter o Python instalado em sua máquina. Também são necessárias as bibliotecas de interface e requisições.
-
-### Passos para Instalação
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/seu-usuario/precifly.git](https://github.com/seu-usuario/precifly.git)
-   cd precifly
+## Como Executar o Projeto
