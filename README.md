@@ -71,5 +71,7 @@ Antes de começar, você precisará ter o Python instalado em sua máquina. Tamb
 * Para utilização, o banco de dados já conta com um usuário administrador previamente cadastrado: 
     * E-mail: "admin@gmail.com"
     * Senha: 123456
-* O estoque inicial também conta com exemplos de eletrônicos cadastrados para testes de busca ou de novas precificações, como "Notebook Gamer", "Mouse Gamer"
+* O estoque inicial também conta com exemplos de eletrônicos cadastrados para testes de busca ou de novas precificações, como "Notebook Gamer", "Mouse Gamer".
 
+## Desenvolvimento
+Projeto desenvolvido por: Matheus Gonçalves, Antônio Salomão, Kelvin Gomes, Bruno Martins, João Vitor, Henrique Di Manno, Lukas Rafael no ambiente da Fábrica de Projetos Ágeis na Universidade de Maríia (UNIMAR)
