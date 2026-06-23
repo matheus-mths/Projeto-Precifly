@@ -66,6 +66,6 @@ O banco de dados armazena informações estruturadas de forma relacional:
 
 ### Pré-requisitos
 Antes de começar, você precisará ter o Python instalado em sua máquina. Também são necessárias as bibliotecas de interface e requisições.
-Instale as dependências necessárias: pip install ttkbootstrap requests pillow
-Execute a aplicação através da tela de login: python TelaLogin.py
+* Instale as dependências necessárias: pip install ttkbootstrap requests pillow
+* Execute a aplicação através da tela de login: python TelaLogin.py
 
